@@ -1,0 +1,12 @@
+<li *ngFor="let task of _tasks"
+    class="list-item d-flex justify-content-between align-items-center">
+  <app-form
+    *ngIf="addTaskFormIsOpen === list.listId"
+    [_usage]="'task'"
+    (_submit)="createTask($event)"
+  ></app-form>
+  <app-task
+    [_task]="task"
+  ></app-task>
+  <button class="btn btn-sm custom-btn">x</button>
+</li>

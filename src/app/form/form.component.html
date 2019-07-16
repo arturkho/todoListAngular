@@ -1,6 +1,8 @@
-<form action="">
+<form>
   <!--  <input type="text" #box (keyup.enter)="onEnter(box.value)">-->
-  <input type="text">
-  <button (click)="saveTaskName()" class="btn btn-primary">Add</button>
-  <button (click)="saveTaskName()" class="btn btn-warning">Remove</button>
+  <input type="text"
+         name="entityName"
+         [(ngModel)]="entityName"
+  >
+  <button (click)="save()" class="btn custom-btn btn-sm">Add {{_usage}}</button>
 </form>

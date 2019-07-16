@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-form',
@@ -7,13 +7,21 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  constructor() { }
+  entityName: string;
+  @Input() _usage: string;
+  @Output() _submit = new EventEmitter();
+  isSave = false;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
-  @Input() message: string;
-  // tslint:disable-next-line:one-line
-  saveTaskName(){
-    console.log(this.message);
+
+  save() {
+    if (this.entityName && this.entityName !== '' && this.entityName.match(/^\s+$/) === null) {
+      this.isSave = true;
+      this._submit.emit(this.entityName);
+    }
   }
 }
