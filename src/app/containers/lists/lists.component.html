@@ -13,16 +13,17 @@
         </button>
       </div>
     </div>
-    <div class="d-flex justify-content-between">
+    <div class="column-title d-flex justify-content-between">
       {{list.listName}}
       <button class="btn btn-danger btn-sm" (click)="openModal(list.listId)">x</button>
     </div>
-    <button *ngIf="addTaskFormIsOpen !== list.listId" (click)="openAddTaskForm(list.listId)" class="add-task-btn">ADD
-      TASK
+    <button *ngIf="addTaskFormIsOpen !== list.listId" (click)="openAddTaskForm(list.listId)" class="add-task-btn">
+      ADD TASK
     </button>
     <app-tasks
       [_tasks]="list.tasks"
       [_listId]="list.listId"
+      [_addTaskFormIsOpen]="addTaskFormIsOpen"
     ></app-tasks>
   </div>
 </div>

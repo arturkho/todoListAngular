@@ -1,12 +1,13 @@
-<li *ngFor="let task of _tasks"
+<app-form
+  *ngIf="_addTaskFormIsOpen === _listId"
+  [_usage]="'task'"
+  (_submit)="createTask($event)"
+></app-form>
+<li *ngFor="let task of _tasks, let i = index"
     class="list-item d-flex justify-content-between align-items-center">
-  <app-form
-    *ngIf="addTaskFormIsOpen === list.listId"
-    [_usage]="'task'"
-    (_submit)="createTask($event)"
-  ></app-form>
   <app-task
     [_task]="task"
+    (_newTask)='updateTask($event, i)'
   ></app-task>
   <button class="btn btn-sm custom-btn">x</button>
 </li>

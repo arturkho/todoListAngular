@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-task',
@@ -6,20 +6,21 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./task.component.scss']
 })
 export class TaskComponent implements OnInit {
-  @Input() _task: any;
+  newTaskName: string;
+  @Input() _task?: {taskName?: string, taskId?: string, isDone?: boolean};
+  @Output() _newTask = new EventEmitter<{taskName?: string, taskId?: string, isDone?: boolean}>();
   changeTask: string;
-
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
   }
-
   onChange(taskId) {
     this.changeTask = taskId;
   }
-
-  acceptChanges(changeValue) {
-    this._task.taskname = changeValue;
+  acceptChanges(taskId) {
+    if (this.newTaskName && this.newTaskName !== '' && this.newTaskName.match(/^\s+$/) === null) {
+      this._task = {taskName: this.newTaskName, taskId: taskId, isDone: this._task.isDone};
+    }
   }
+
 }

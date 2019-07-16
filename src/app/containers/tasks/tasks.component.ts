@@ -6,19 +6,24 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./tasks.component.scss']
 })
 export class TasksComponent implements OnInit {
-
-  taskName: string;
-
-  @Input() _listId: any;
+  @Input() _listId: string;
   @Input() _tasks: any;
-  addTaskFormIsOpen: any;
+  @Input() _addTaskFormIsOpen: string;
 
   constructor() {
 
   }
 
-  ngOnInit() {}
-  addTask() {}
-  changeTask() {}
-  doneTask() {}
+  ngOnInit() {
+  }
+
+  updateTask(newTask, index) {
+    this._tasks.splice(index, 1, newTask);
+  }
+
+  createTask(taskName) {
+    const id = '_' + Math.random().toString(36).substr(2, 9);
+    const task = {taskName: taskName, taskId: id, isDone: false};
+    this._tasks.unshift(task);
+  }
 }
