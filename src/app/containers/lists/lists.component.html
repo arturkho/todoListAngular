@@ -1,29 +1,8 @@
 <div class="d-flex justify-content-start">
   <div *ngFor="let list of _lists let i = index" class="border list-container">
-    <div *ngIf="openRemoveModal === list.listId" class="modal-confirmation">
-      <h5>
-        Remove list {{list.listName}}???
-      </h5>
-      <div class="d-flex justify-content-between">
-        <button (click)="removeList(i)" class="btn btn-danger">
-          YES
-        </button>
-        <button (click)="closeModal(list.listId)" class="custom-btn">
-          NO
-        </button>
-      </div>
-    </div>
-    <div class="column-title d-flex justify-content-between">
-      {{list.listName}}
-      <button class="btn btn-danger btn-sm" (click)="openModal(list.listId)">x</button>
-    </div>
-    <button *ngIf="addTaskFormIsOpen !== list.listId" (click)="openAddTaskForm(list.listId)" class="add-task-btn">
-      ADD TASK
-    </button>
-    <app-tasks
-      [_tasks]="list.tasks"
-      [_listId]="list.listId"
-      [_addTaskFormIsOpen]="addTaskFormIsOpen"
-    ></app-tasks>
+    <app-list
+      [list]="list"
+      (_listId)='removeCurrentList($event, i)'
+    ></app-list>
   </div>
 </div>

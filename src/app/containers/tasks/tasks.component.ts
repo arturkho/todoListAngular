@@ -17,6 +17,10 @@ export class TasksComponent implements OnInit {
   ngOnInit() {
   }
 
+  openAddTaskForm(listId) {
+    this._addTaskFormIsOpen = listId;
+  }
+
   updateTask(newTask, index) {
     this._tasks.splice(index, 1, newTask);
   }
@@ -25,5 +29,15 @@ export class TasksComponent implements OnInit {
     const id = '_' + Math.random().toString(36).substr(2, 9);
     const task = {taskName: taskName, taskId: id, isDone: false};
     this._tasks.unshift(task);
+    this._addTaskFormIsOpen = '';
+  }
+
+  removeTask(index) {
+    this._tasks.splice(index, 1);
+  }
+
+  closeForm(value) {
+    console.log(value);
+    this._addTaskFormIsOpen = value;
   }
 }

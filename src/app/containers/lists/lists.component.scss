@@ -2,39 +2,8 @@ app-lists {
   cursor: pointer;
 }
 
-.add-task-btn {
-  background-color: rgba(222, 227, 213, 0.3);
-  color: rgba(7, 8, 5, 0.3);
-  width: 100%;
-  height: 3em;
-  border: 1px dotted rgba(207, 227, 191, 0.3);
-  box-shadow: none;
-}
-
-.column-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  border-bottom: 1px solid lightgray;
-  margin-bottom: .5rem;
-}
-
-.add-task-btn:hover {
-  background-color: rgba(222, 227, 213, 1);
-  color: rgba(7, 8, 5, 1);
-}
-
 .list-container {
   width: 20%;
   padding: 1em;
   margin: 0 20px;
-}
-
-.modal-confirmation {
-  color: rgba(255, 10, 3, 0.59);
-  position: absolute;
-  top: 70px;
-  width: 17em;
-  border: 1px solid rgba(54, 54, 54, 0.11);
-  background-color: #ffffff;
-  padding: 1em;
 }

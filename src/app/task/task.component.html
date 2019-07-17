@@ -1,13 +1,28 @@
 <form class="task-form d-flex justify-content-between align-items-center">
   <div class="d-flex align-items-center justify-content-between">
-    <input type="checkbox">
-    <div *ngIf="changeTask !== _task.taskId"
-         class="task-name">{{_task.taskName}}</div>
-    <div *ngIf="changeTask === _task.taskId">
-      <input type="text"
-             name="newTaskName"
-             [(ngModel)]="newTaskName"
-             class="task-input"
+    <input
+      type="checkbox"
+      name="checkbox"
+      (change)="update(!_task.isDone)"
+      [checked]="_task.isDone"
+    >
+    <div
+      *ngIf="changeTask !== _task.taskId"
+      class="task-name"
+      [ngClass]="{'task-done': _task.isDone === true, 'task-not-done': _task.isDone === false}"
+    >
+      <a
+        [routerLink]="['list:id/task', _task.taskId]">
+        {{_task.taskName}}
+      </a>
+    </div>
+    <div
+      *ngIf="changeTask === _task.taskId">
+      <input
+        type="text"
+        name="newTaskName"
+        [(ngModel)]="newTaskName"
+        class="task-input"
       >
     </div>
   </div>
