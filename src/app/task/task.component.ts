@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {isBoolean} from 'util';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-task',
@@ -12,10 +13,10 @@ export class TaskComponent implements OnInit {
   @Output() _newTask = new EventEmitter<{ taskName?: string, taskId?: string, isDone?: boolean }>();
   changeTask: string;
 
-  constructor() {
-  }
+  constructor(private ar: ActivatedRoute) {}
 
   ngOnInit() {
+    // this.ar.params.subscribe(param => console.log(param));
   }
 
   onChange(taskId) {

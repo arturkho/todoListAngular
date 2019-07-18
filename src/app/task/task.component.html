@@ -12,7 +12,7 @@
       [ngClass]="{'task-done': _task.isDone === true, 'task-not-done': _task.isDone === false}"
     >
       <a
-        [routerLink]="['list:id/task', _task.taskId]">
+        [routerLink]="['tasks', _task.taskId]">
         {{_task.taskName}}
       </a>
     </div>

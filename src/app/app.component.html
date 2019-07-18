@@ -1,11 +1,3 @@
 <div class="app-wrap">
-  <div>
-    <app-simple-form
-      [_usage]="'list'"
-      (_submit)="createList($event)"
-    ></app-simple-form>
-    <app-lists
-      [_lists]="lists"
-    ></app-lists>
-  </div>
+  <router-outlet></router-outlet>
 </div>

@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -10,7 +11,9 @@ export class ListComponent implements OnInit {
   @Input() list: any;
   @Output() _listId = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private ar: ActivatedRoute) {
+    ar.params.subscribe(param => console.log(param));
+  }
 
   ngOnInit() {
   }
